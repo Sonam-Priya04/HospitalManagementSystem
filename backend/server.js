@@ -15,7 +15,11 @@ connectCloudinary()
 
 // middlewares
 app.use(express.json())
-app.use(cors())
+app.use(cors(
+  {
+    origin : "https://hospital-management-system-beryl-one.vercel.app/"
+  }
+))
 
 // api endpoints
 app.use("/api/user", userRouter)
