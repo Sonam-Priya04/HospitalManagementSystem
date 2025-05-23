@@ -15,10 +15,7 @@ connectCloudinary()
 
 // middlewares
 app.use(express.json())
-app.use(cors({
-  origin:"https://sensational-banoffee-72bae5.netlify.app/",
-  credentials: true
-}))
+app.use(cors())
 
 // api endpoints
 app.use("/api/user", userRouter)
