@@ -12,14 +12,26 @@ const app = express()
 const port = process.env.PORT || 4000
 connectDB()
 connectCloudinary()
+const allowedOrigins = [
+  "https://hospital-management-system-beryl-one.vercel.app",
+  "https://hospital-management-system-2ogdz2ulp-sonam-priyas-projects.vercel.app",
+  "https://your-netlify-site.netlify.app", // <-- Add any other frontends
+];
 
 // middlewares
 app.use(express.json())
-app.use(cors(
-  {
-    origin : "https://hospital-management-system-beryl-one.vercel.app/"
-  }
-))
+
+app.use(cors({
+  origin: function (origin, callback) {
+    // Allow requests with no origin (like mobile apps or curl)
+    if (!origin || allowedOrigins.includes(origin)) {
+      callback(null, true);
+    } else {
+      callback(new Error("Not allowed by CORS"));
+    }
+  },
+  credentials: true, // Only if you're using cookies/auth headers
+}));
 
 // api endpoints
 app.use("/api/user", userRouter)
