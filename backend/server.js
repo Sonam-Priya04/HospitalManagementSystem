@@ -14,6 +14,7 @@ connectDB()
 connectCloudinary()
 const allowedOrigins = [
   "https://hospital-management-system-beryl-one.vercel.app",
+  "https://hospital-management-system-ie7c.vercel.app",
   "https://hospital-management-system-2ogdz2ulp-sonam-priyas-projects.vercel.app",
   "https://your-netlify-site.netlify.app", // <-- Add any other frontends
 ];
